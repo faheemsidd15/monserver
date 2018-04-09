@@ -1,27 +1,21 @@
 import Sequelize from 'sequelize';
 
-const sequelize = new Sequelize(config.database, config.username, config.password, config);
-
-
-
-
-
+const sequelize = new Sequelize('moneyo', 'postgres', 'postgres');
 
 
 const models = {
 
-   user: sequelize.import(path.join(__dirname, file));
+  user: sequelize.import('./users'),
 };
 
 
-
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+Object.keys(models).forEach((modelName) => {
+  if ('associate' in models[modelName].associate) {
+    models[modelName].associate(models);
   }
 });
 
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;
 
-export default models
+export default models;
