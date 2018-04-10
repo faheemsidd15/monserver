@@ -1,5 +1,9 @@
 export default (sequelize, DataTypes) => {
   const User = sequelize.define('user', {
+    name: {
+      type: DataTypes.STRING,
+      unique: false,
+    },
     username: {
       type: DataTypes.STRING,
       unique: true,
@@ -12,12 +16,12 @@ export default (sequelize, DataTypes) => {
 
   });
 
-  User.associate = (models) => {
-    User.belongsToMany(models.Group, {
-      through: 'member',
-      foreignKey: 'userId',
-    });
-  };
+  //   User.associate = (models) => {
+  //     User.belongsToMany(models.Group, {
+  //       through: 'member',
+  //       foreignKey: 'userId',
+  //     });
+  //   };
 
   return User;
 };
