@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Income = sequelize.define('incomes', {
+  const Incomes = sequelize.define('incomes', {
     name: {
       type: DataTypes.STRING,
 
@@ -13,12 +13,12 @@ export default (sequelize, DataTypes) => {
 
   });
 
-  Income.associate = (models) => {
-    Income.hasOne(models.Users, {
+  Incomes.associate = (models) => {
+    Incomes.hasOne(models.Users, {
       through: 'user',
       foreignKey: 'userId',
     });
   };
 
-  return Income;
+  return Incomes;
 };

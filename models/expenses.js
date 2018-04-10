@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-  const Expense = sequelize.define('expenses', {
+  const Expenses = sequelize.define('expenses', {
     name: {
       type: DataTypes.STRING,
       unique: false,
@@ -15,12 +15,12 @@ export default (sequelize, DataTypes) => {
 
   });
 
-  Expense.associate = (models) => {
-    Expense.hasOne(models.Users, {
+  Expenses.associate = (models) => {
+    Expenses.hasOne(models.Users, {
       through: 'user',
       foreignKey: 'userId',
     });
   };
 
-  return Expense;
+  return Expenses;
 };
